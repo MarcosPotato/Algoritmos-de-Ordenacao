@@ -3,7 +3,7 @@ package GenerateVector;
 import java.util.Random;
 
 public class GenerateVectors {
-    public int[] generateAscVector(int length) {
+    public int[] AscVector(int length) {
         int[] vector = new int[length];
         
         for(int index = 0; index < vector.length; index++){
@@ -13,7 +13,7 @@ public class GenerateVectors {
         return vector;
     }
 
-    public int[] generateDescVector(int length) {
+    public int[] DescVector(int length) {
         int[] vector = new int[length];
         
         for(int index = 0; index < vector.length; index++){
@@ -24,7 +24,7 @@ public class GenerateVectors {
         return vector;
     }
 
-    public int[] generateRandomVector(int length) {
+    public int[] RandomVector(int length) {
         int[] vector = new int[length];
 
         Random rand = new Random();

@@ -28,44 +28,27 @@ public class BubbleSort {
     public static void main(String[] args) {
         GenerateVectors generate = new GenerateVectors();
 
-        int[] ascVector100 = generate.generateAscVector(100000);
-        int[] descVector100 = generate.generateDescVector(100000); 
-        int[] randomVector100 = generate.generateRandomVector(100000);
+        int[] ascVector = generate.AscVector(100000);
+        int[] descVector = generate.DescVector(100000); 
+        int[] randomVector = generate.RandomVector(100000);
 
-        /* int[] ascVector200 = generateAscVector(200000);
-        int[] ascVector400 = generateAscVector(400000);
-        int[] ascVector1M  = generateAscVector(1000000);
-        int[] ascVector2M  = generateAscVector(2000000); */
+        long ascStartTime = System.currentTimeMillis();
+        int[] ordenedAscVector = bubbleSort(ascVector);
+        long ascEndTime = System.currentTimeMillis();
+        long ascTotal = ascEndTime - ascStartTime;
 
+        long descStartTime = System.currentTimeMillis();
+        int[] ordenedDescVector = bubbleSort(descVector);
+        long descEndTime = System.currentTimeMillis();
+        long descTotal = descEndTime - descStartTime; 
 
-        long ascStartTime100 = System.currentTimeMillis();
-        int[] ordenedAscVector100 = bubbleSort(ascVector100);
-        long ascEndTime100 = System.currentTimeMillis();
-        long ascTotal100 = ascEndTime100 - ascStartTime100;
+        long randomStartTime = System.currentTimeMillis();
+        int[] ordenedRandomVector = bubbleSort(randomVector);
+        long randomEndTime = System.currentTimeMillis();
+        long randomTotal = randomEndTime - randomStartTime; 
 
-        long descStartTime100 = System.currentTimeMillis();
-        int[] ordenedDescVector100 = bubbleSort(descVector100);
-        long descEndTime100 = System.currentTimeMillis();
-        long descTotal100 = descEndTime100 - descStartTime100; 
-
-        long randomStartTime100 = System.currentTimeMillis();
-        int[] ordenedRandomVector100 = bubbleSort(randomVector100);
-        long randomEndTime100 = System.currentTimeMillis();
-        long randomTotal100 = randomEndTime100 - randomStartTime100; 
-
-        System.out.println("Vetor crescent de 100000 posicoes levou " + ascTotal100 + "ms para executar");
-        System.out.println("Vetor decrescente de 100000 posicoes levou " + descTotal100 + "ms para executar");
-        System.out.println("Vetor randomico de 100000 posicoes levou " + randomTotal100 + "ms para executar");
-        
-        /* System.out.println("Vetor original: ");
-        for(int index = 0; index < ascVector100.length; index++){
-            System.out.println(ascVector100[index] + " ");
-        }
-        
-        System.out.println("Vetor ordenado: ");
-        for(int index = 0; index < ordenedVector100.length; index++){
-            System.out.println(ordenedVector100[index] + " ");
-        } */
-        
+        System.out.println("Vetor crescent de 100000 posicoes levou " + ascTotal + "ms para executar");
+        System.out.println("Vetor decrescente de 100000 posicoes levou " + descTotal + "ms para executar");
+        System.out.println("Vetor randomico de 100000 posicoes levou " + randomTotal + "ms para executar");
     }
 }
