@@ -7,44 +7,51 @@ public class SelectionSort {
         
         int lowestValue = 0;
         int lowestIndex = 0;
-        int auxiliar;
 
-        for(int index = 0; index < vector.length; index++){
-            for(int auxIndex = index; auxIndex < vector.length; auxIndex++){
-                if(vector[auxIndex] < vector[auxIndex++]){
-                    lowestValue = vector[auxIndex];
-                    lowestIndex = auxIndex;
-                }
-            }
-
-            auxiliar = vector[index];
-            vector[index] = lowestValue;
-            vector[lowestIndex] = auxiliar; 
-        }
+		for (int index = 0; index < vector.length - 1; index++) {
+			lowestIndex = index;
+			for (int auxiliar = index + 1; auxiliar < vector.length; auxiliar++)
+				if (vector[auxiliar] < vector[lowestIndex])
+					lowestIndex = auxiliar;
+			lowestValue = vector[lowestIndex];
+			vector[lowestIndex] = vector[index];
+			vector[index] = lowestValue;
+		}
         
         return vector;
     }
 
     public static void main(String[] args) {
         GenerateVectors generate = new GenerateVectors();
-
-        int[] ascVector = generate.RandomVector(7);
-
-        long startTime = System.currentTimeMillis();
-        int[] ordenedVector = selectionSort(ascVector);
-        long endTime = System.currentTimeMillis();
-        long finishtime = endTime - startTime;
-
-        System.out.println("Vetor original");
-        for(int i = 0; i < ascVector.length; i++){
-            System.out.println(ascVector[i]);
+        
+        for(int i = 0; i < 5; i++){
+            int[] ascVector = generate.AscVector(100000);
+            
+            long ascStartTime = System.currentTimeMillis();
+            int[] ordenedAscVector = selectionSort(ascVector);
+            long ascEndTime = System.currentTimeMillis();
+            long ascTotal = ascEndTime - ascStartTime;
+            
+            System.out.println("Vetor crescente levou " + ascTotal + "ms para executar");
+            
+            int[] descVector = generate.DescVector(100000); 
+            
+            long descStartTime = System.currentTimeMillis();
+            int[] ordenedDescVector = selectionSort(descVector);
+            long descEndTime = System.currentTimeMillis();
+            long descTotal = descEndTime - descStartTime; 
+            
+            System.out.println("Vetor decrescente levou " + descTotal + "ms para executar"); 
+            
+            int[] randomVector = generate.RandomVector(100000);
+            
+            long randomStartTime = System.currentTimeMillis();
+            int[] ordenedRandomVector = selectionSort(randomVector);
+            long randomEndTime = System.currentTimeMillis();
+            long randomTotal = randomEndTime - randomStartTime; 
+            
+            System.out.println("Vetor randomico levou " + randomTotal + "ms para executar");  
         }
 
-        System.out.println("Vetor original");
-        for(int i = 0; i < ordenedVector.length; i++){
-            System.out.println(ordenedVector[i]);
-        }
-
-        System.out.println("Em um vetor randomico levou: " + finishtime + "ms para executar");
     }
 }

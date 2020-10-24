@@ -7,7 +7,7 @@ public class GenerateVectors {
         int[] vector = new int[length];
         
         for(int index = 0; index < vector.length; index++){
-            vector[index] = index++;
+            vector[index] = index;
         }
 
         return vector;
