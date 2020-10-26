@@ -22,7 +22,7 @@ public class InsertionSort {
         GenerateVectors generate = new GenerateVectors();
         
         for(int i = 0; i < 5; i++){
-            int[] ascVector = generate.AscVector(10);
+            int[] ascVector = generate.AscVector(2000000);
             
             long ascStartTime = System.currentTimeMillis();
             int[] ordenedAscVector = insertionSort(ascVector);
@@ -31,7 +31,7 @@ public class InsertionSort {
             
             System.out.println("Vetor crescente levou " + ascTotal + "ms para executar");
             
-            int[] descVector = generate.DescVector(100000); 
+            int[] descVector = generate.DescVector(2000000); 
             
             long descStartTime = System.currentTimeMillis();
             int[] ordenedDescVector = insertionSort(descVector);
@@ -40,7 +40,7 @@ public class InsertionSort {
             
             System.out.println("Vetor decrescente levou " + descTotal + "ms para executar"); 
             
-            int[] randomVector = generate.RandomVector(100000);
+            int[] randomVector = generate.RandomVector(2000000);
             
             long randomStartTime = System.currentTimeMillis();
             int[] ordenedRandomVector = insertionSort(randomVector);
