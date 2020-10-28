@@ -3,7 +3,7 @@ package AlgoritmosDeOrdenacao;
 import GenerateVector.GenerateVectors;
 
 public class MergeSort {
-    private static void intercala(int initialIndex, int auxiliarIndex, int length, int[] vector) {
+    private static void intersperse(int initialIndex, int auxiliarIndex, int length, int[] vector) {
 		int temp[] = new int[vector.length];
         
         int index = initialIndex;
@@ -46,7 +46,7 @@ public class MergeSort {
 			auxiliar = (initialIndex + length) / 2;
 			mSort(initialIndex, auxiliar, vector);
 			mSort(auxiliar + 1, length, vector);
-			intercala(initialIndex, auxiliar + 1, length, vector);
+			intersperse(initialIndex, auxiliar + 1, length, vector);
         }
 	}
     

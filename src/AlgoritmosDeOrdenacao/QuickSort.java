@@ -6,13 +6,13 @@ public class QuickSort {
     private int leftMark = 0;
     private int rightMark = 0;
 
-    private void particao(int left, int right, int vector[]) {
+    private void partition(int left, int right, int vector[]) {
 		int x, w;
 		leftMark = left;
-		rightMark = right;
-		/* obt�m o pivectoro x */
-		x = vector[(leftMark + rightMark) / 2];
-		// System.out.println("pivectoro= " + x);
+    rightMark = right;
+    
+    x = vector[(leftMark + rightMark) / 2];
+    
 		do {
 			while (x > vector[leftMark])
                 leftMark++;
@@ -30,24 +30,23 @@ public class QuickSort {
 		} while (leftMark <= rightMark);
 	}
 
-	/* Entra aqui o procedimento Particao */
-	private void ordena(int left, int right, int vector[]) {
-		particao(left, right, vector);
+	private void order(int left, int right, int vector[]) {
+		partition(left, right, vector);
 		if (left < rightMark)
-			ordena(left, rightMark, vector);
+			order(left, rightMark, vector);
 		if (leftMark < right)
-			ordena(leftMark, right, vector);
+			order(leftMark, right, vector);
 	}
 
 	public void quickSort(int vector[]) {
-		ordena(0, vector.length - 1, vector);
+		order(0, vector.length - 1, vector);
     }
     
     public static void main(String[] args) {
         GenerateVectors generate = new GenerateVectors();
         QuickSort method = new QuickSort();
 
-        int[] ascVector = generate.AscVector(100000);
+        int[] ascVector = generate.AscVector(2000000);
         
         long ascStartTime = System.currentTimeMillis();
         method.quickSort(ascVector);
@@ -56,7 +55,7 @@ public class QuickSort {
         
         System.out.println("Vetor crescente levou " + ascTotal + "ms para executar");
         
-        int[] descVector = generate.DescVector(100000); 
+        int[] descVector = generate.DescVector(2000000); 
         
         long descStartTime = System.currentTimeMillis();
         method.quickSort(descVector);
@@ -65,7 +64,7 @@ public class QuickSort {
         
         System.out.println("Vetor decrescente levou " + descTotal + "ms para executar");  
         
-        int[] randomVector = generate.RandomVector(100000);
+        int[] randomVector = generate.RandomVector(2000000);
         
         long randomStartTime = System.currentTimeMillis();
         method.quickSort(randomVector);
